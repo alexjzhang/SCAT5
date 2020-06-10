@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>Athlete Background</title>
+    <link 
+      rel="stylesheet"
+      type ="text/css" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.2/css/bulma.min.css">
+  </head>
+
+  <body>
+    <nav class="navbar is-info">
+      <div class="navbar-brand">
+        <a class="navbar-item">
+          <b>SCAT5</b>
+        </a>
+      </div>
+    
+      <div id="navbar" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item"  href="1PatientDetails.html">
+            Patient Details
+          </a>
+    
+          <a class="navbar-item" href="2ImmediateAssessment.html">
+            Immediate or On-Field Assessment
+          </a>
+    
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Office or Off-Field Assessment
+            </a>
+    
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="3.1AthleteBackground.html">
+                Athlete Background
+              </a>
+              <a class="navbar-item"  href="3.2SymptomEvaluation.html">
+                Symptom Evaluation
+              </a>
+              <a class="navbar-item"  href="3.3CognitiveScreening.html">
+                Cognitive Screening
+              </a>
+              <a class="navbar-item"  href="3.4NeurologicalScreen.html">
+                Neurological Screen
+              </a>
+              <a class="navbar-item"  href="3.5DelayedRecall.html">
+                Delayed Recall
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item"  href="4Decision.html">
+                  Decision
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="columns" id="app">
+      <div class="column is-two-thirds">
+        <section class="section">
+          <h1 class="title"><strong>Step 1: Athlete Background</strong></h1>
+          <p class="subtitle">
+            Please note that the neurocognitive assessment should be done in a distraction-free
+            environment with the athlete in a resting state.
+          </p>
+
+          <hr> <!--Line break-->
+
+          <section class="form"> <!--Form-->
+            <div class="box">
+              <div class="field">
+                <label class="label">Sport / team / school:</label>
+                <div class="control">
+                  <input 
+                    v-model="form.sportTeamSchool" 
+                    class="input" 
+                    type="text" 
+                    placeholder="Text">
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Date / time of injury:</label>
+                <div class="control">
+                  <input 
+                    v-model="form.date" 
+                    class="input" 
+                    type="date">
+                  <input 
+                    v-model="form.time" 
+                    class="input" 
+                    type="time">
+                </div>
+              </div>
+          
+              <div class="field">
+                <label class="label">Years of education completed:</label>
+                <div class="control">
+                  <input 
+                    v-model="form.eduYears" 
+                    class="input" 
+                    type="number" 
+                    placeholder="Number">
+                </div>
+              </div>
+          
+              <div class="field">
+                <label class="label">Age:</label>
+                <div class="control">
+                  <input 
+                    v-model="form.age" 
+                    class="input" 
+                    type="number" 
+                    min = "13" 
+                    placeholder="Number">
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Gender:</label>
+                <div class="control">
+                  <label class="radio">
+                    <input 
+                      v-model="form.gender" 
+                      name="gender" 
+                      type="radio" 
+                      value="Male">
+                    M
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form.gender" 
+                      name="gender" 
+                      type="radio" 
+                      value="Female">
+                    F
+                  </label>
+                  <label class="radio">
+                      <input 
+                        v-model="form.gender" 
+                        name="gender" 
+                        type="radio" 
+                        value="Other">
+                      Other
+                  </label>
+                </div>
+              </div>
+          
+              <div class="field">
+                <label class="label">Dominant Hand:</label>
+                <div class="control">
+                  <label class="radio">
+                    <input 
+                      v-model="form.dominantHand" 
+                      name="dominantHand" 
+                      type="radio" 
+                      value="Left">
+                    Left
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form.dominantHand" 
+                      name="dominantHand" 
+                      type="radio" 
+                      value="Neither">
+                    Neither
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form.dominantHand" 
+                      name="dominantHand" 
+                      type="radio" 
+                      value="Right">
+                    Right
+                  </label> 
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">How many diagnosed concussions has the athlete had in the past?:</label>
+                <div class="control">
+                  <input 
+                    v-model="form.diagnosedConcussions"
+                    class="input"
+                    min = "0" 
+                    value = "0" 
+                    type="number" 
+                    placeholder="0">
+                </div>
+              </div>
+                          
+              <div class="field">
+                <label class="label">When was the most recent concussion?:</label>
+                <div class="control">
+                  <input 
+                    v-model="form.recentConcussion" 
+                    :disabled="form.diagnosedConcussions==0" 
+                    class="input" 
+                    type="date">
+                </div>
+              </div>
+              
+              <div class="field">
+                <label class="label">
+                  How long was the recovery (time to being cleared to play) from the most recent concussion (in days)?:
+                </label>
+                <div class="control" >
+                  <input 
+                    v-model="form.recoveryTime" 
+                    min = "0" 
+                    :disabled="form.diagnosedConcussions==0" 
+                    class="input" 
+                    type="number" 
+                    placeholder="Number">
+                </div>
+              </div>           
+            </div>     
+
+            <hr> <!--Line break-->
+
+            <div class="box">
+              <h2 class="subtitle">
+                <p><strong>Has the athlete ever been:</strong></p>
+              </h2>
+              
+              <div class="field">
+                <label class="label">Hospitalized for a head injury?</label>
+                <div class="control">
+                  <label class="radio">
+                    <input 
+                      v-model="form.headInjury" 
+                      name="headInjury" 
+                      type="radio" 
+                      value="Yes">
+                    Yes
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form.headInjury" 
+                      name="headInjury" 
+                      type="radio" 
+                      value="No">
+                    No
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Diagnosed/treated for headache disorder or migraines?:</label>
+                <div class="control">
+                  <label class="radio">
+                    <input 
+                      v-model="form.headacheDisorder" 
+                      name="headacheDisorder" 
+                      type="radio" 
+                      value="Yes">
+                    Yes
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form.headacheDisorder" 
+                      name="headacheDisorder" 
+                      type="radio" 
+                      value="No">
+                    No
+                  </label>
+                </div>
+              </div>
+              
+              <div class="field">
+                <label class="label">Diagnosed with a learning disability / dyslexia?</label>
+                <div class="control">
+                  <label class="radio">
+                    <input 
+                      v-model="form.learningDisability" 
+                      name="learningDisability" 
+                      type="radio" 
+                      value="Yes">
+                    Yes
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form.learningDisability" 
+                      name="learningDisability" 
+                      type="radio" 
+                      value="No">
+                    No
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Diagnosed with ADD/ ADHD:</label>
+                <div class="control">
+                  <label class="radio">
+                    <input 
+                      v-model="form.ADHDADD" 
+                      name="ADHDADD" 
+                      type="radio" 
+                      value="Yes">
+                    Yes
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form.ADHDADD" 
+                      name="ADHDADD" 
+                      type="radio" 
+                      value="No">
+                    No
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Diagnosed with depression, anxiety, or other psychiatric disorders?</label>
+                <div class="control">
+                  <label class="radio">
+                    <input 
+                      v-model="form.psychiatricDisorder" 
+                      name="psychiatricDisorder" 
+                      type="radio" 
+                      value="Yes">
+                    Yes
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form.psychiatricDisorder" 
+                      name="psychiatricDisorder" 
+                      type="radio" 
+                      value="No">
+                    No
+                  </label>
+                </div>
+              </div>
+
+
+              <div class="field">
+                <label class="label">Current Medications? If yes, please list:</label>
+                <div class="control">
+                  <input 
+                    v-model="form.medication" 
+                    class="input" 
+                    type="text" 
+                    placeholder="Text">
+                </div>
+              </div>
+
+              <div class="field is-grouped">
+                <div class="control">
+                  <button class="button is-link" @click="form.submitted = true">Submit</button>
+                </div>
+                <div class="control">
+                  <button class="button is-link is-light" @click="form.submitted = false">Cancel</button>
+                </div>
+                <div class="control">
+                  <button class="button is-success">
+                    <a href="3.2SymptomEvaluation.html" >
+                      Next
+                    </a>
+                  </button>
+                </div>
+              </div>
+              
+              <div class = "box" v-if="form.submitted">
+                <p class = "subtitle">Results</p>
+                <p v-for="(value, name) in form">
+                    {{ name }}: {{value}}</p>
+              </div>
+                
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src = "3.1AthleteBackground.js"></script>
+  </body>
+</html>

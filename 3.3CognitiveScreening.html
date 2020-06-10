@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>Cognitive Screening</title> <!-- EDIT -->
+    <link 
+      rel="stylesheet"
+      type ="text/css" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.2/css/bulma.min.css">
+    <link 
+      rel="stylesheet"
+      type ="text/css" 
+      href="scale1.css">
+  </head>
+
+  <body>
+    <nav class="navbar is-info">
+      <div class="navbar-brand">
+        <a class="navbar-item">
+          <b>SCAT5</b>
+        </a>
+      </div>
+    
+      <div id="navbar" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item"  href="1PatientDetails.html">
+            Patient Details
+          </a>
+    
+          <a class="navbar-item" href="2ImmediateAssessment.html">
+            Immediate or On-Field Assessment
+          </a>
+    
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Office or Off-Field Assessment
+            </a>
+    
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="3.1AthleteBackground.html">
+                Athlete Background
+              </a>
+              <a class="navbar-item"  href="3.2SymptomEvaluation.html">
+                Symptom Evaluation
+              </a>
+              <a class="navbar-item"  href="3.3CognitiveScreening.html">
+                Cognitive Screening
+              </a>
+              <a class="navbar-item"  href="3.4NeurologicalScreen.html">
+                Neurological Screen
+              </a>
+              <a class="navbar-item"  href="3.5DelayedRecall.html">
+                Delayed Recall
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item"  href="4Decision.html">
+                  Decision
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="columns" id="app">
+      <div class="column is-two-thirds">
+        <section class="section">
+          <h1 class="title"><strong>Step 3: Cognitive Screening</strong></h1> <!-- EDIT -->
+
+          <hr> <!--Line break-->
+          
+          <section class="form"> 
+            <div class = "box">
+            <p class="subtitle">Orientation</p>
+              <div class="field">
+                <span>What month is it?</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form.month" type="radio" name="month" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form.month" type="radio" name="month" value = "1"><span>1</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>What is the date today?</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form.date" type="radio" name="date" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form.date" type="radio" name="date" value = "1"><span>1</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>What is the day of week?</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form.dayOfWeek" type="radio" name="dayOfWeek" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form.dayOfWeek" type="radio" name="dayOfWeek" value = "1"><span>1</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>What year is it?</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form.year" type="radio" name="year" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form.year" type="radio" name="year" value = "1"><span>1</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>What time is it right now?</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form.time" type="radio" name="time" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form.time" type="radio" name="time" value = "1"><span>1</span>
+                  </label>
+                </div><p>(within 1 hour)</p>
+              </div>
+              <br>
+              <div class="field"> 
+                <p><strong>Orientation score: </strong>{{ orientationScore }}</p>
+              </div>
+            </div>
+          </section>
+
+          <hr> <!--Line break-->
+
+          <section class="form2"> 
+            <div class = "box">
+              <p class="subtitle">Immediate Memory</p>
+              <p>The Immediate Memory component can be completed using the
+                traditional 5-word per trial list or optionally using 10-words per trial
+                to minimise any ceiling effect. All 3 trials must be administered irrespective
+                of the number correct on the first trial. Administer at the rate
+                of one word per second.</p>
+              <br>
+              <p><strong>Please choose EITHER the 5 or 10 word list groups and circle the specific word list chosen
+                for this test.</strong></p>
+              <br>
+              <p><em>I am going to test your memory. I will read you a list of words and when I am done, repeat
+                back as many words as you can remember, in any order. For Trials 2 & 3: I am going to repeat
+                the same list again. Repeat back as many words as you can remember in any order, even if
+                you said the word before.</em></p>
+              <br>
+              
+              <span>Choose a word list: </span>
+              <div class="field">
+                <div class="control">  
+                  <div class="select is-info">
+                    <select v-model="form2.wordList">
+                      <option value="0">List A (5 words)</option>
+                      <option value="1">List B (5 words)</option>
+                      <option value="2">List C (5 words)</option>
+                      <option value="3">List D (5 words)</option>
+                      <option value="4">List E (5 words)</option>
+                      <option value="5">List F (5 words)</option>
+                      <option value="6">List G (10 words)</option>
+                      <option value="7">List H (10 words)</option>
+                      <option value="8">List I (10 words)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="columns">
+                
+                <div class="column">
+                  <div class = "box">
+                    <p><strong>Trial 1:</strong> {{ form2.memorizedWords1.length }}/{{wordListSelection.length}}</p>
+                    <span v-for="word in wordListSelection">
+                      <input type="checkbox" :value="word" v-model="form2.memorizedWords1">
+                       <span class="checkbox-label"> {{word}} </span>
+                      <br>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="column">
+                  <div class = "box">
+                    <p><strong>Trial 2:</strong> {{ form2.memorizedWords2.length }}/{{wordListSelection.length}}</p>
+                    <span v-for="word in wordListSelection">
+                      <input type="checkbox" :value="word" v-model="form2.memorizedWords2">
+                       <span class="checkbox-label"> {{word}} </span>
+                      <br>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="column">
+                  <div class = "box">
+                    <p><strong>Trial 3:</strong> {{ form2.memorizedWords3.length }}/{{wordListSelection.length}}</p>
+                    <span v-for="word in wordListSelection">
+                      <input type="checkbox" :value="word" v-model="form2.memorizedWords3">
+                       <span class="checkbox-label"> {{word}} </span>
+                      <br>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field"> 
+                <p><strong>Immediate Memory Score: </strong>{{ immediateMemoryScore }} of {{ wordListSelection.length*3}}</p>
+              </div>
+              
+              <div class="field">
+                <label class="label">Time that last trial was completed:</label>
+                <div class="control">
+                  <input 
+                    v-model="form2.time" 
+                    class="input" 
+                    type="time">
+                </div>
+              </div>
+              
+            </div>
+          </section>
+
+          <hr> <!-- Line break -->
+          <div class="box">
+            <p class = "is-size-4">Concentration</p>
+            <br>
+            <section class="form3"> 
+              <div class = "box">
+                <p class="subtitle">Digits Backward</p>
+                <p>Please circle the Digit list chosen (A, B, C, D, E, F). Administer at the
+                  rate of one digit per second reading DOWN the selected column.</p>
+                <br>
+                <p><em>I am going to read a string of numbers and when I am done, you repeat them back to me
+                  in reverse order of how I read them to you. For example, if I say 7-1-9, you would say 9-1-7.</em></p>
+                <br>
+                
+                <span>Choose a concentration number list: </span>
+                <div class="field">
+                  <div class="control">  
+                    <div class="select is-info">
+                      <select v-model="form3.numList">
+                        <option value="0">List A</option>
+                        <option value="1">List B</option>
+                        <option value="2">List C</option>
+                        <option value="3">List D</option>
+                        <option value="4">List E</option>
+                        <option value="5">List F</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class = "box">
+                  <span v-for="num in numListSelection">
+                    <input type="checkbox" :value="num" v-model="form3.memorizedNumbers">
+                      <span class="checkbox-label"> {{num}} </span>
+                    <br>
+                  </span>
+                </div>
+
+                <div class="field"> 
+                  <p><strong>Digits Score: </strong>{{ digitsScore }} of 4</p>
+                </div>
+              </div>
+
+              <br>
+
+              <div class = "box">
+                <p class="subtitle">Months in Reverse Order</p>
+                <p><em>Now tell me the months of the year in reverse order. Start with the last month and go backward.
+                    So you’ll say December, November. Go ahead.</em></p>
+                <br>
+                <div class = "box">
+                    <input type="checkbox" :value="1" v-model="form3.months">
+                      <span class="checkbox-label"> Dec - Nov - Oct - Sept - Aug - Jul - Jun - May - Apr - Mar - Feb - Jan </span>
+                    <br>
+                </div>
+
+                <div class="field"> 
+                  <p><strong>Months Score: </strong>{{ monthsScore }} of 1</p>
+                </div>
+              </div>
+              <div class="field"> 
+                <p><strong>Concentration Total Score (Digits + Months): </strong>{{ concentrationTotalScore }} of 5</p>
+              </div>
+            </section>
+
+            <br>
+
+            <div class="field is-grouped">
+              <div class="control">
+                <button class="button is-link" @click="form.submitted = true">Submit</button>
+              </div>
+              <div class="control">
+                <button class="button is-link is-light" @click="form.submitted = false">Cancel</button>
+              </div>
+              <div class="control">
+                <button class="button is-success">
+                  <a href="3.4NeurologicalScreen.html" >
+                    Next
+                  </a>
+                </button>
+              </div>
+            </div>
+            
+            <div class = "box" v-if="form.submitted">
+              <p class = "subtitle">Results</p>
+              <p v-for="(value, name) in form">
+                  {{ name }}: {{value}}</p>
+              <p v-for="(value, name) in form2">
+                  {{ name }}: {{value}}</p>
+              <p v-for="(value, name) in form3">
+                  {{ name }}: {{value}}</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src = "3.3CognitiveScreening.js"></script> <!-- EDIT -->
+  </body>
+</html>
+    

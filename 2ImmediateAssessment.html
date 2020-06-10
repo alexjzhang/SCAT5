@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>Immediate or On-Field Assessment</title> 
+    <link 
+      rel="stylesheet"
+      type ="text/css" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.2/css/bulma.min.css">
+  </head>
+
+  <body>
+    <nav class="navbar is-info">
+      <div class="navbar-brand">
+        <a class="navbar-item">
+          <b>SCAT5</b>
+        </a>
+      </div>
+    
+      <div id="navbar" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item"  href="1PatientDetails.html">
+            Patient Details
+          </a>
+    
+          <a class="navbar-item" href="2ImmediateAssessment.html">
+            Immediate or On-Field Assessment
+          </a>
+    
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Office or Off-Field Assessment
+            </a>
+    
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="3.1AthleteBackground.html">
+                Athlete Background
+              </a>
+              <a class="navbar-item"  href="3.2SymptomEvaluation.html">
+                Symptom Evaluation
+              </a>
+              <a class="navbar-item"  href="3.3CognitiveScreening.html">
+                Cognitive Screening
+              </a>
+              <a class="navbar-item"  href="3.4NeurologicalScreen.html">
+                Neurological Screen
+              </a>
+              <a class="navbar-item"  href="3.5DelayedRecall.html">
+                Delayed Recall
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item"  href="4Decision.html">
+                  Decision
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="columns" id="app">
+      <div class="column is-two-thirds">
+        <section class="section">
+          <h1 class="title"><strong>Immediate or On-Field Assessment</strong></h1>
+            <p class="content is-small">The following elements should be assessed for all athletes who
+              are suspected of having a concussion prior to proceeding to the
+              neurocognitive assessment and ideally should be done on-field after
+              the first first aid / emergency care priorities are completed.<br>
+            If any of the “Red Flags“ or observable signs are noted after 
+              a direct or indirect blow to the head, the athlete should be immediately and
+              safely removed from participation and evaluated by a physician or
+              licensed healthcare professional.<br>
+            Consideration of transportation to a medical facility should 
+              be at the discretion of the physician or licensed healthcare professional.<br>
+            The GCS is important as a standard measure for all patients 
+              and can be done serially if necessary in the event of deterioration in conscious
+              state. The Maddocks questions and cervical spine exam are critical
+              steps of the immediate assessment; however, these do not need to
+              be done serially.</p>
+              
+          <hr> <!--Line break-->
+
+          <div class="box">
+            <div class="subtitle">
+              <h1 class="has-text-danger">Step 1: Red Flags</h1>
+            </div>
+            <ul>
+              <li>• Neck pain or tenderness</li>
+              <li>• Double vision</li>
+              <li>• Weakness or tingling/burning in arms or legs</li>
+              <li>• Severe or increasing headache</li>
+              <li>• Seizure or convulsion</li>
+              <li>• Loss of consciousness</li>
+              <li>• Deteriorating conscious state</li>
+              <li>• Vomiting</li>
+              <li>• Increasingly restless, agitated, or combative</li>
+            </ul>
+          </div>
+          
+          <hr> <!--Line break-->
+
+          <section class="form">
+            <div class="box">
+            <h1 class="subtitle">Step 2: Observable Signs</h1>
+
+            <div class="field">
+               <label class="label"></label>
+              <div class="control">
+                <label class="checkbox">
+                  <input
+                    type="checkbox"
+                    v-model="form.witnessed"
+                    name="witnessed"
+                    value="witnessed">
+                  Witnessed
+                </label>
+                <label class="checkbox">
+                  <input 
+                    type="checkbox"
+                    v-model="form.witnessed"
+                    name="witnessed"
+                    value="observed">
+                  Observed on Video
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Lying motionless on the playing surface</label>
+              <div class="control">
+                <label class="radio">
+                  <input 
+                    v-model="form.motionless" 
+                    name="motionless" 
+                    type="radio" 
+                    value="Yes">
+                  Yes
+                </label>
+                <label class="radio">
+                  <input 
+                    v-model="form.motionless" 
+                    name="motionless" 
+                    type="radio" 
+                    value="No">
+                  No
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Balance / gait difficulties / motor incoordination: stumbling, slow/ laboured movements</label>
+              <div class="control">
+                <label class="radio">
+                  <input 
+                    v-model="form.balance" 
+                    name="balance" 
+                    type="radio" 
+                    value="Yes">
+                  Yes
+                </label>
+                <label class="radio">
+                  <input 
+                    v-model="form.balance" 
+                    name="balance" 
+                    type="radio" 
+                    value="No">
+                  No
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Disorientation or confusion, or an inability to respond appropiately to questions</label>
+              <div class="control">
+                <label class="radio">
+                  <input 
+                    v-model="form.disorientation" 
+                    name="disorientation" 
+                    type="radio" 
+                    value="Yes">
+                  Yes
+                </label>
+                <label class="radio">
+                  <input 
+                    v-model="form.disorientation" 
+                    name="disorientation" 
+                    type="radio" 
+                    value="No">
+                  No
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Blank or vacant look</label>
+              <div class="control">
+                <label class="radio">
+                  <input 
+                    v-model="form.blankLook" 
+                    name="blankLook" 
+                    type="radio" 
+                    value="Yes">
+                  Yes
+                </label>
+                <label class="radio">
+                  <input 
+                    v-model="form.blankLook" 
+                    name="blankLook" 
+                    type="radio" 
+                    value="No">
+                  No
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Facial injury after head trauma</label>
+              <div class="control">
+                <label class="radio">
+                  <input 
+                    v-model="form.facialInjury" 
+                    name="facialInjury" 
+                    type="radio" 
+                    value="Yes">
+                  Yes
+                </label>
+                <label class="radio">
+                  <input 
+                    v-model="form.facialInjury" 
+                    name="facialInjury" 
+                    type="radio" 
+                    value="No">
+                  No
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <hr> <!--Line break-->
+
+          <div class="box">
+            <h1 class="subtitle">Step 3: Memory Assessment Maddocks Questions</h1>
+
+            <div class="field">
+              <label class="label">"I'm going to ask you a few questions, please listen carefully 
+                and give your best effor. First, tell me what happened?"</label>
+              <div class="control">
+                <textarea 
+                  class="textarea"
+                  v-model="form.whatHappened" 
+                  type="text" 
+                  rows="3"
+                  placeholder="Text">
+                </textarea>
+              </div>
+            </div>
+
+            <p><strong>Mark Y for correct answer/ N for incorrect</strong></p>
+
+            <div class="field">
+              <label class="label">What venue are we at today?</label>
+              <div class="control">
+                <label class="radio">
+                  <input 
+                    v-model="form.venue" 
+                    name="venue" 
+                    type="radio" 
+                    value="Yes">
+                  Yes
+                </label>
+                <label class="radio">
+                  <input 
+                    v-model="form.venue" 
+                    name="venue" 
+                    type="radio" 
+                    value="No">
+                  No
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Which half is it now?</label>
+              <div class="control">
+                <label class="radio">
+                  <input 
+                    v-model="form.half" 
+                    name="half" 
+                    type="radio" 
+                    value="Yes">
+                  Yes
+                </label>
+                <label class="radio">
+                  <input 
+                    v-model="form.half" 
+                    name="half" 
+                    type="radio" 
+                    value="No">
+                  No
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Who scored last in this match?</label>
+              <div class="control">
+                <label class="radio">
+                  <input 
+                    v-model="form.scored" 
+                    name="scored" 
+                    type="radio" 
+                    value="Yes">
+                  Yes
+                </label>
+                <label class="radio">
+                  <input 
+                    v-model="form.scored" 
+                    name="scored" 
+                    type="radio" 
+                    value="No">
+                  No
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">What team did you play last week/game?</label>
+              <div class="control">
+                <label class="radio">
+                  <input 
+                    v-model="form.lastTeam" 
+                    name="lastTeam" 
+                    type="radio" 
+                    value="Yes">
+                  Yes
+                </label>
+                <label class="radio">
+                  <input 
+                    v-model="form.lastTeam" 
+                    name="lastTeam" 
+                    type="radio" 
+                    value="No">
+                  No
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Did your team win the last game?</label>
+              <div class="control">
+                <label class="radio">
+                  <input 
+                    v-model="form.lastWin" 
+                    name="lastWin" 
+                    type="radio" 
+                    value="Yes">
+                  Yes
+                </label>
+                <label class="radio">
+                  <input 
+                    v-model="form.lastWin" 
+                    name="lastWin" 
+                    type="radio" 
+                    value="No">
+                  No
+                </label>
+              </div>
+            </div>
+
+            <p class="content is-small"><strong>Note: Appropriate sport-specific questions may be substituted.</strong></p>
+          </div>
+        </section>
+
+        <hr> <!--Line break-->
+
+        <section class="form2">
+          <div class="box">
+            <h1 class="subtitle">Step 4: Examination Glasgow Coma Scale (GCS)</h1>
+
+            <div class="field">
+              <label class="label">Time of assessment</label>
+              <div class="control">
+                <input 
+                  v-model="form2.time" 
+                  class="input" 
+                  type="time">
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Date of assessment</label>
+              <div class="control">
+                <input 
+                  v-model="form2.date" 
+                  class="input" 
+                  type="date">
+              </div>
+            </div>
+
+            <div class="field">
+
+            <div class="field">
+              <div class="control">
+                <div class="select is-info">
+                  <select v-model="form2.eyeResponse">
+                    <option value="0">Best eye response (E)</option>
+                    <option value="1">No eye opening (1)</option>
+                    <option value="2">Eye opening in response to pain (2)</option>
+                    <option value="3">Eye opening to speech (3)</option>
+                    <option value="4">Eye opening spontaneously (4)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <div class="select is-info">
+                  <select v-model="form2.verbalResponse">
+                    <option value="0">Best verbal response (V)</option>
+                    <option value="1">No verbal response (1)</option>
+                    <option value="2">Incomprehensible sounds (2)</option>
+                    <option value="3">Inappropriate words (3)</option>
+                    <option value="4">Confused (4)</option>
+                    <option value="5">Oriented (5)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <div class="select is-info">
+                  <select v-model="form2.motorResponse">
+                    <option value="0">Best motor response (M)</option>
+                    <option value="1">No motor response (1)</option>
+                    <option value="2">Extension to pain (2)</option>
+                    <option value="3">Abnormal flexion to pain (3)</option>
+                    <option value="4">Flexion/Withdrawal to pain (4)</option>
+                    <option value="5">Localizes to pain (5)</option>
+                    <option value="6">Obeys commands (6)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <br>
+            <div class="field"> 
+              <p><strong>Glasgow Coma score (E + V + M): </strong>{{ glasgowComaScore }}</p>
+            </div>
+          </div>
+        </div>
+
+          <hr> <!--Line break-->
+
+          <div class="box">
+            <h1 class="subtitle">Cervical Spine Assessment</h1>
+            <div class="field">
+              <label class="label">Does the athlete report that their neck is pain free at rest?</label>
+              <div class="control">
+                <label class="radio">
+                  <input 
+                    v-model="form2.neckPain" 
+                    name="neckPain" 
+                    type="radio" 
+                    value="Yes">
+                  Yes
+                </label>
+                <label class="radio">
+                  <input 
+                    v-model="form2.neckPain" 
+                    name="neckPain" 
+                    type="radio" 
+                    value="No">
+                  No
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label"><strong>If there is NO neck pain at rest,</strong> does the athlete have a full range of ACTIVE pain free movement?</label>
+              <div class="control">
+                <label class="radio">
+                  <input 
+                    v-model="form2.fullRange" 
+                    name="fullRange" 
+                    type="radio" 
+                    value="Yes">
+                  Yes
+                </label>
+                <label class="radio">
+                  <input 
+                    v-model="form2.fullRange" 
+                    name="fullRange" 
+                    type="radio" 
+                    value="No">
+                  No
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Is the limb strength and sensation normal?</label>
+              <div class="control">
+                <label class="radio">
+                  <input 
+                    v-model="form2.limbStrength" 
+                    name="limbStrength" 
+                    type="radio" 
+                    value="Yes">
+                  Yes
+                </label>
+                <label class="radio">
+                  <input 
+                    v-model="form2.limbStrength" 
+                    name="limbStrength" 
+                    type="radio" 
+                    value="No">
+                  No
+                </label>
+              </div>
+            </div>
+            <p><strong>In a patient who is not lucid or fully conscious, a cervical spine injury SHOULD BE ASSUMED until proven otherwise.</strong></p>
+            <br>
+            <div class="field is-grouped">
+              <div class="control">
+                <button class="button is-link" @click="form.submitted = true">Submit</button>
+              </div>
+              <div class="control">
+                <button class="button is-link is-light" @click="form.submitted = false">Cancel</button>
+              </div>
+              <div class="control">
+                <button class="button is-success">
+                  <a href="3.1AthleteBackground.html" >
+                    Next
+                  </a>
+                </button>
+              </div>
+            </div>
+            
+            <div class = "box" v-if="form.submitted">
+              <p class = "subtitle">Results</p>
+              <p v-for="(name, value) in form">
+                  {{ value }}: {{name}}</p>
+              <p v-for="(name, value) in form2">
+                {{ value }}: {{name}}</p>
+            </div>
+          </div>
+
+        </section>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src = "2ImmediateAssessment.js"></script> 
+  </body>
+</html>
+    

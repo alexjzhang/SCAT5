@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>Symptom Evaluation</title>
+    <link 
+      rel="stylesheet"
+      type ="text/css" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.2/css/bulma.min.css">
+    <link 
+      rel="stylesheet"
+      type ="text/css" 
+      href="scale1.css">
+
+  </head>
+
+  <body>
+    <nav class="navbar is-info">
+      <div class="navbar-brand">
+        <a class="navbar-item">
+          <b>SCAT5</b>
+        </a>
+      </div>
+    
+      <div id="navbar" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item"  href="1PatientDetails.html">
+            Patient Details
+          </a>
+    
+          <a class="navbar-item" href="2ImmediateAssessment.html">
+            Immediate or On-Field Assessment
+          </a>
+    
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Office or Off-Field Assessment
+            </a>
+    
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="3.1AthleteBackground.html">
+                Athlete Background
+              </a>
+              <a class="navbar-item"  href="3.2SymptomEvaluation.html">
+                Symptom Evaluation
+              </a>
+              <a class="navbar-item"  href="3.3CognitiveScreening.html">
+                Cognitive Screening
+              </a>
+              <a class="navbar-item"  href="3.4NeurologicalScreen.html">
+                Neurological Screen
+              </a>
+              <a class="navbar-item"  href="3.5DelayedRecall.html">
+                Delayed Recall
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item"  href="4Decision.html">
+                  Decision
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="columns" id="app">
+      <div class="column is-two-thirds">
+        <section class="section">
+          <h1 class="title"><strong>Step 2: Symptom Evaluation</strong></h1>
+          <p class="subtitle">
+              The athlete should be given the symptom form and asked to read this instruction
+              paragraph out loud then complete the symptom scale. For the baseline assessment,
+              the athlete should rate his/her symptoms based on how he/she typically feels and for
+              the post injury assessment the athlete should rate their symptoms at this point in time. 
+          </p>
+
+          <hr> <!--Line break-->
+          
+          <section class="form1"> <!--Form-->
+            <div class="box">
+              <div class="field">
+                <label class="label">Please Check:</label>
+                <div class="control">
+                  <label class="radio">
+                    <input 
+                      v-model="form1.evalType" 
+                      name="evalType" 
+                      type="radio" 
+                      value="Baseline">
+                    Baseline
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form1.evalType" 
+                      name="evalType" 
+                      type="radio" 
+                      value="Post-Injury">
+                    Post-Injury
+                  </label>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <hr> <!--Line break-->
+
+          <section class="form2"> <!--Form-->
+            <div class="box">
+              <p style="float: right; margin-right: 0.05%">Scale: <strong>None:</strong> 0 <strong>| Mild:</strong> 1, 2 <strong>| 
+                Moderate:</strong> 3, 4 <strong>| Severe:</strong> 5, 6</p>
+              <br>
+              <div class="field">
+                <span>Headache</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form2.headache" type="radio" name="headache" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.headache" type="radio" name="headache" value = "1"><span>1</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.headache" type="radio" name="headache" value = "2"><span>2</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.headache" type="radio" name="headache" value = "3"><span>3</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.headache" type="radio" name="headache" value = "4"><span>4</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.headache" type="radio" name="headache" value = "5"><span>5</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.headache" type="radio" name="headache" value = "6"><span>6</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>"Pressure in head"</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form2.pressureInHead" type="radio" name="pressureInHead" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.pressureInHead" type="radio" name="pressureInHead" value = "1"><span>1</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.pressureInHead" type="radio" name="pressureInHead" value = "2"><span>2</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.pressureInHead" type="radio" name="pressureInHead" value = "3"><span>3</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.pressureInHead" type="radio" name="pressureInHead" value = "4"><span>4</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.pressureInHead" type="radio" name="pressureInHead" value = "5"><span>5</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.pressureInHead" type="radio" name="pressureInHead" value = "6"><span>6</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>"Neck Pain</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form2.neckPain" type="radio" name="neckPain" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.neckPain" type="radio" name="neckPain" value = "1"><span>1</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.neckPain" type="radio" name="neckPain" value = "2"><span>2</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.neckPain" type="radio" name="neckPain" value = "3"><span>3</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.neckPain" type="radio" name="neckPain" value = "4"><span>4</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.neckPain" type="radio" name="neckPain" value = "5"><span>5</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.neckPain" type="radio" name="neckPain" value = "6"><span>6</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>"Nausea or vomiting</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form2.nausea" type="radio" name="nausea" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.nausea" type="radio" name="nausea" value = "1"><span>1</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.nausea" type="radio" name="nausea" value = "2"><span>2</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.nausea" type="radio" name="nausea" value = "3"><span>3</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.nausea" type="radio" name="nausea" value = "4"><span>4</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.nausea" type="radio" name="nausea" value = "5"><span>5</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.nausea" type="radio" name="nausea" value = "6"><span>6</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>Dizziness</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form2.dizziness" type="radio" name="dizziness" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.dizziness" type="radio" name="dizziness" value = "1"><span>1</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.dizziness" type="radio" name="dizziness" value = "2"><span>2</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.dizziness" type="radio" name="dizziness" value = "3"><span>3</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.dizziness" type="radio" name="dizziness" value = "4"><span>4</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.dizziness" type="radio" name="dizziness" value = "5"><span>5</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.dizziness" type="radio" name="dizziness" value = "6"><span>6</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>Blurred Vision</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form2.blurredVision" type="radio" name="blurredVision" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.blurredVision" type="radio" name="blurredVision" value = "1"><span>1</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.blurredVision" type="radio" name="blurredVision" value = "2"><span>2</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.blurredVision" type="radio" name="blurredVision" value = "3"><span>3</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.blurredVision" type="radio" name="blurredVision" value = "4"><span>4</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.blurredVision" type="radio" name="blurredVision" value = "5"><span>5</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.blurredVision" type="radio" name="blurredVision" value = "6"><span>6</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>Balance Problems</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form2.balance" type="radio" name="balance" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.balance" type="radio" name="balance" value = "1"><span>1</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.balance" type="radio" name="balance" value = "2"><span>2</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.balance" type="radio" name="balance" value = "3"><span>3</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.balance" type="radio" name="balance" value = "4"><span>4</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.balance" type="radio" name="balance" value = "5"><span>5</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.balance" type="radio" name="balance" value = "6"><span>6</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>Sensitivity to light</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form2.sensitivityLight" type="radio" name="sensitivityLight" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.sensitivityLight" type="radio" name="sensitivityLight" value = "1"><span>1</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.sensitivityLight" type="radio" name="sensitivityLight" value = "2"><span>2</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.sensitivityLight" type="radio" name="sensitivityLight" value = "3"><span>3</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.sensitivityLight" type="radio" name="sensitivityLight" value = "4"><span>4</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.sensitivityLight" type="radio" name="sensitivityLight" value = "5"><span>5</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.sensitivityLight" type="radio" name="sensitivityLight" value = "6"><span>6</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>Sensitivity to noise</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form2.sensitivityNoise" type="radio" name="sensitivityNoise" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.sensitivityNoise" type="radio" name="sensitivityNoise" value = "1"><span>1</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.sensitivityNoise" type="radio" name="sensitivityNoise" value = "2"><span>2</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.sensitivityNoise" type="radio" name="sensitivityNoise" value = "3"><span>3</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.sensitivityNoise" type="radio" name="sensitivityNoise" value = "4"><span>4</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.sensitivityNoise" type="radio" name="sensitivityNoise" value = "5"><span>5</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.sensitivityNoise" type="radio" name="sensitivityNoise" value = "6"><span>6</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>Feeling slowed down</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form2.slowed" type="radio" name="slowed" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.slowed" type="radio" name="slowed" value = "1"><span>1</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.slowed" type="radio" name="slowed" value = "2"><span>2</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.slowed" type="radio" name="slowed" value = "3"><span>3</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.slowed" type="radio" name="slowed" value = "4"><span>4</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.slowed" type="radio" name="slowed" value = "5"><span>5</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.slowed" type="radio" name="slowed" value = "6"><span>6</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>Feeling like "in a fog"</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form2.fog" type="radio" name="fog" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.fog" type="radio" name="fog" value = "1"><span>1</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.fog" type="radio" name="fog" value = "2"><span>2</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.fog" type="radio" name="fog" value = "3"><span>3</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.fog" type="radio" name="fog" value = "4"><span>4</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.fog" type="radio" name="fog" value = "5"><span>5</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.fog" type="radio" name="fog" value = "6"><span>6</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>"Don't feel right"</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form2.feelRight" type="radio" name="feelRight" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.feelRight" type="radio" name="feelRight" value = "1"><span>1</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.feelRight" type="radio" name="feelRight" value = "2"><span>2</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.feelRight" type="radio" name="feelRight" value = "3"><span>3</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.feelRight" type="radio" name="feelRight" value = "4"><span>4</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.feelRight" type="radio" name="feelRight" value = "5"><span>5</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.feelRight" type="radio" name="feelRight" value = "6"><span>6</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>Difficulty concentrating</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form2.concentrating" type="radio" name="concentrating" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.concentrating" type="radio" name="concentrating" value = "1"><span>1</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.concentrating" type="radio" name="concentrating" value = "2"><span>2</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.concentrating" type="radio" name="concentrating" value = "3"><span>3</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.concentrating" type="radio" name="concentrating" value = "4"><span>4</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.concentrating" type="radio" name="concentrating" value = "5"><span>5</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.concentrating" type="radio" name="concentrating" value = "6"><span>6</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>Difficulty remembering</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form2.remembering" type="radio" name="remembering" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.remembering" type="radio" name="remembering" value = "1"><span>1</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.remembering" type="radio" name="remembering" value = "2"><span>2</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.remembering" type="radio" name="remembering" value = "3"><span>3</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.remembering" type="radio" name="remembering" value = "4"><span>4</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.remembering" type="radio" name="remembering" value = "5"><span>5</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.remembering" type="radio" name="remembering" value = "6"><span>6</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>Fatigue or low energy</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form2.fatigue" type="radio" name="fatigue" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.fatigue" type="radio" name="fatigue" value = "1"><span>1</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.fatigue" type="radio" name="fatigue" value = "2"><span>2</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.fatigue" type="radio" name="fatigue" value = "3"><span>3</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.fatigue" type="radio" name="fatigue" value = "4"><span>4</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.fatigue" type="radio" name="fatigue" value = "5"><span>5</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.fatigue" type="radio" name="fatigue" value = "6"><span>6</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>Confusion</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form2.confusion" type="radio" name="confusion" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.confusion" type="radio" name="confusion" value = "1"><span>1</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.confusion" type="radio" name="confusion" value = "2"><span>2</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.confusion" type="radio" name="confusion" value = "3"><span>3</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.confusion" type="radio" name="confusion" value = "4"><span>4</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.confusion" type="radio" name="confusion" value = "5"><span>5</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.confusion" type="radio" name="confusion" value = "6"><span>6</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>Drowsiness</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form2.drowsiness" type="radio" name="drowsiness" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.drowsiness" type="radio" name="drowsiness" value = "1"><span>1</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.drowsiness" type="radio" name="drowsiness" value = "2"><span>2</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.drowsiness" type="radio" name="drowsiness" value = "3"><span>3</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.drowsiness" type="radio" name="drowsiness" value = "4"><span>4</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.drowsiness" type="radio" name="drowsiness" value = "5"><span>5</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.drowsiness" type="radio" name="drowsiness" value = "6"><span>6</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>More emotional</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form2.emotional" type="radio" name="emotional" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.emotional" type="radio" name="emotional" value = "1"><span>1</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.emotional" type="radio" name="emotional" value = "2"><span>2</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.emotional" type="radio" name="emotional" value = "3"><span>3</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.emotional" type="radio" name="emotional" value = "4"><span>4</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.emotional" type="radio" name="emotional" value = "5"><span>5</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.emotional" type="radio" name="emotional" value = "6"><span>6</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>Irritability</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form2.irritability" type="radio" name="irritability" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.irritability" type="radio" name="irritability" value = "1"><span>1</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.irritability" type="radio" name="irritability" value = "2"><span>2</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.irritability" type="radio" name="irritability" value = "3"><span>3</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.irritability" type="radio" name="irritability" value = "4"><span>4</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.irritability" type="radio" name="irritability" value = "5"><span>5</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.irritability" type="radio" name="irritability" value = "6"><span>6</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>Sadness</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form2.sadness" type="radio" name="sadness" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.sadness" type="radio" name="sadness" value = "1"><span>1</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.sadness" type="radio" name="sadness" value = "2"><span>2</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.sadness" type="radio" name="sadness" value = "3"><span>3</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.sadness" type="radio" name="sadness" value = "4"><span>4</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.sadness" type="radio" name="sadness" value = "5"><span>5</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.sadness" type="radio" name="sadness" value = "6"><span>6</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>Nervous or anxious</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form2.nervous" type="radio" name="nervous" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.nervous" type="radio" name="nervous" value = "1"><span>1</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.nervous" type="radio" name="nervous" value = "2"><span>2</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.nervous" type="radio" name="nervous" value = "3"><span>3</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.nervous" type="radio" name="nervous" value = "4"><span>4</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.nervous" type="radio" name="nervous" value = "5"><span>5</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.nervous" type="radio" name="nervous" value = "6"><span>6</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>Trouble falling asleep</span>
+                <div class="rating_scale">
+                  <label>
+                    <input v-model="form2.sleep" type="radio" name="sleep" value = "0"><span>0</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.sleep" type="radio" name="sleep" value = "1"><span>1</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.sleep" type="radio" name="sleep" value = "2"><span>2</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.sleep" type="radio" name="sleep" value = "3"><span>3</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.sleep" type="radio" name="sleep" value = "4"><span>4</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.sleep" type="radio" name="sleep" value = "5"><span>5</span>
+                  </label>
+                  <label>
+                    <input v-model="form2.sleep" type="radio" name="sleep" value = "6"><span>6</span>
+                  </label>
+                </div><p>(if applicable)</p>
+              </div>
+              
+              <br>
+              <div class="field"> 
+                <p><strong>Total number of symptoms: </strong>{{ totalSymptoms }} of 22</p>
+                <p><strong>Symptom severity score: </strong>{{ totalSeverity }} of 132</p>
+              </div>
+            </div>
+          </section>
+
+          <hr> <!--Line break-->
+
+          <section class="form3"> <!--Form-->
+            <div class="box">
+              <div class="field">
+                <label class="label">Do your symptoms get worse with physical activity?</label>
+                <div class="control">
+                  <label class="radio">
+                    <input 
+                      v-model="form3.worsePhysical" 
+                      name="worsePhysical" 
+                      type="radio" 
+                      value="Yes">
+                    Yes
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form3.worsePhysical" 
+                      name="worsePhysical" 
+                      type="radio" 
+                      value="No">
+                    No
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Do your symptoms get worse with mental activity?</label>
+                <div class="control">
+                  <label class="radio">
+                    <input 
+                      v-model="form3.worseMental" 
+                      name="worseMental" 
+                      type="radio" 
+                      value="Yes">
+                    Yes
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form3.worseMental" 
+                      name="worseMental" 
+                      type="radio" 
+                      value="No">
+                    No
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">If 100% is feeling perfectly normal, what percent of normal do you feel?</label>
+                <div class="control">
+                  <input 
+                    v-model="form3.normal" 
+                    class="input" 
+                    type="number" 
+                    min = "0" max = "100">
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">If not 100%, why?</label>
+                <div class="control">
+                  <input 
+                    v-model="form3.not100" 
+                    class="input" 
+                    type="text" 
+                    :disabled="form3.normal==100"
+                    placeholder="Text">
+                </div>
+              </div>
+
+              <div class="field is-grouped">
+                <div class="control">
+                  <button class="button is-link" @click="form1.submitted = true">Submit</button>
+                </div>
+                <div class="control">
+                  <button class="button is-link is-light" @click="form1.submitted = false">Cancel</button>
+                </div>
+                <div class="control">
+                  <button class="button is-success">
+                    <a href="3.3CognitiveScreening.html" >
+                      Next
+                    </a>
+                  </button>
+                </div>
+              </div>
+              
+              <div class = "box" v-if="form1.submitted">
+                <p class = "subtitle">Results</p>
+                <p v-for="(value, name) in form1">
+                    {{ name }}: {{value}}</p>
+                <p v-for="(value, name) in form2">
+                    {{ name }}: {{value}}</p>
+                <p v-for="(value, name) in form3">
+                    {{ name }}: {{value}}</p>
+              </div>
+                
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
+        
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src = "3.2SymptomEvaluation.js"></script>
+  </body>
+</html>
+  

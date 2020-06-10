@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>Delayed Recall</title>
+    <link 
+      rel="stylesheet"
+      type ="text/css" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.2/css/bulma.min.css">
+  </head>
+
+  <body>
+    <nav class="navbar is-info">
+      <div class="navbar-brand">
+        <a class="navbar-item">
+          <b>SCAT5</b>
+        </a>
+      </div>
+    
+      <div id="navbar" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item"  href="1PatientDetails.html">
+            Patient Details
+          </a>
+    
+          <a class="navbar-item" href="2ImmediateAssessment.html">
+            Immediate or On-Field Assessment
+          </a>
+    
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Office or Off-Field Assessment
+            </a>
+    
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="3.1AthleteBackground.html">
+                Athlete Background
+              </a>
+              <a class="navbar-item"  href="3.2SymptomEvaluation.html">
+                Symptom Evaluation
+              </a>
+              <a class="navbar-item"  href="3.3CognitiveScreening.html">
+                Cognitive Screening
+              </a>
+              <a class="navbar-item"  href="3.4NeurologicalScreen.html">
+                Neurological Screen
+              </a>
+              <a class="navbar-item"  href="3.5DelayedRecall.html">
+                Delayed Recall
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item"  href="4Decision.html">
+                  Decision
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="columns" id="app">
+      <div class="column is-two-thirds">
+        <section class="section">
+          <h1 class="title"><strong>Step 5: Delayed Recall</strong></h1>
+
+          <hr> <!--Line break-->
+
+          <section class="form"> 
+            <div class = "box">
+              <p>The delayed recall should be performed after 5 minutes have
+                elapsed since the end of the Immediate Recall section. Score 1
+                pt. for each correct response.</p>
+              <br>
+              <p>Do you remember that list of words I read a few times earlier? Tell me as many words
+                  from the list as you can remember in any order.</p>
+              <br>
+
+              <div class="field">
+                <label class="label">Number of words tested (not on SCAT5)</label>
+                <div class="control">
+                  <label class="radio">
+                    <input 
+                      v-model="form.numOfWords" 
+                      name="numOfWords" 
+                      type="radio" 
+                      value="5">
+                    5
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form.numOfWords" 
+                      name="numOfWords" 
+                      type="radio" 
+                      value="10">
+                    10
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Time Started</label>
+                <div class="control">
+                  <input 
+                    v-model="form.time" 
+                    class="input" 
+                    type="time">
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Please record each word correctly recalled. Total score equals number of words recalled.
+                </label>
+                <div class="control">
+                  <input 
+                    v-model="form.wordsRecalled" 
+                    class="input" 
+                    type="text" 
+                    placeholder="Text">
+                </div>
+              </div>
+
+
+              <div class="field"> 
+                <p><strong>Total number of words recalled accurately:</strong> {{ numWordsRecalled }} of {{ numberOfWords }}</p>
+              </div>
+
+              <div class="field is-grouped">
+                <div class="control">
+                  <button class="button is-link" @click="form.submitted = true">Submit</button>
+                </div>
+                <div class="control">
+                  <button class="button is-link is-light" @click="form.submitted = false">Cancel</button>
+                </div>
+                <div class="control">
+                  <button class="button is-success">
+                    <a href="4Decision.html" >
+                      Next
+                    </a>
+                  </button>
+                </div>
+              </div>
+              
+              <div class = "box" v-if="form.submitted">
+                <p class = "subtitle">Results</p>
+                <p v-for="(value, name) in form">
+                    {{ name }}: {{value}}</p>
+              </div>
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src = "3.5DelayedRecall.js"></script>
+  </body>
+</html>
+    

@@ -1,0 +1,37 @@
+.rating_scale {
+  display: block;
+  text-align: center;
+  font-size: 0; 
+  /* display:inline-block; */
+  float: right;
+}
+.rating_scale span {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0.3em 0.8em;
+  font-size: 15px;
+  font-weight: 250;
+  width: 4em;
+  background: lightgrey;
+  color: black;
+  border-top: solid 1px #fff;
+  border-bottom: solid 1px #fff;
+  border-right: solid 1px #fff;
+}
+.rating_scale label:first-child span {
+  border-left: solid 1px #fff;
+  border-top-left-radius: 0.25em;
+  border-bottom-left-radius: 0.25em;
+}
+.rating_scale label:last-child span {
+  border-top-right-radius: 0.25em;
+  border-bottom-right-radius: 0.25em;
+}
+.rating_scale input[type="radio"] {
+  display: none;
+}
+.rating_scale input[type="radio"]:checked ~ span {
+  background: #399ADA;}
+/* html, body {
+  background: #eee;
+} */

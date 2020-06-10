@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>Patient Details</title>
+    <link 
+      rel="stylesheet"
+      type ="text/css" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.2/css/bulma.min.css">
+  </head>
+
+  <body>
+    <nav class="navbar is-info">
+      <div class="navbar-brand">
+        <a class="navbar-item">
+          <b>SCAT5</b>
+        </a>
+      </div>
+    
+      <div id="navbar" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item"  href="1PatientDetails.html">
+            Patient Details
+          </a>
+    
+          <a class="navbar-item" href="2ImmediateAssessment.html">
+            Immediate or On-Field Assessment
+          </a>
+    
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Office or Off-Field Assessment
+            </a>
+    
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="3.1AthleteBackground.html">
+                Athlete Background
+              </a>
+              <a class="navbar-item"  href="3.2SymptomEvaluation.html">
+                Symptom Evaluation
+              </a>
+              <a class="navbar-item"  href="3.3CognitiveScreening.html">
+                Cognitive Screening
+              </a>
+              <a class="navbar-item"  href="3.4NeurologicalScreen.html">
+                Neurological Screen
+              </a>
+              <a class="navbar-item"  href="3.5DelayedRecall.html">
+                Delayed Recall
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item"  href="4Decision.html">
+                  Decision
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="columns" id="app">
+      <div class="column is-three-quarters">
+        <section class="section">
+          <h1 class="title"><strong>Patient Details</strong></h1>
+
+          <hr> <!--Line break-->
+          
+          <section class="form"> <!--Form-->
+            <div class="box">
+              <div class="field">
+                <label class="label">Name:</label>
+                <div class="control">
+                  <input 
+                    v-model="form.name" 
+                    class="input" 
+                    type="text" 
+                    placeholder="Text">
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">DOB:</label>
+                <div class="control">
+                  <input 
+                    v-model="form.dob" 
+                    class="input" 
+                    type="date">
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Address:</label>
+                <div class="control">
+                  <input 
+                    v-model="form.address" 
+                    class="input" 
+                    type="text" 
+                    placeholder="Text">
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">ID number:</label>
+                <div class="control">
+                  <input 
+                    v-model="form.id" 
+                    class="input" 
+                    type="number" 
+                    placeholder="Number">
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Examiner:</label>
+                <div class="control">
+                  <input 
+                    v-model="form.examiner" 
+                    class="input" 
+                    type="text" 
+                    placeholder="Text">
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Date of injury:</label>
+                <div class="control">
+                  <input 
+                    v-model="form.injuryDate" 
+                    class="input" 
+                    type="date">
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Time:</label>
+                <div class="control">
+                  <input 
+                    v-model="form.time" 
+                    class="input" 
+                    type="time">
+                </div>
+              </div>
+
+              <div class="field is-grouped">
+                <div class="control">
+                  <button class="button is-link" @click="form.submitted = true">Submit</button>
+                </div>
+                <div class="control">
+                  <button class="button is-light" @click="form.submitted = false">Cancel</button>
+                </div>
+                <div class="control">
+                  <button class="button is-success">
+                    <a href="2ImmediateAssessment.html" >
+                      Next
+                    </a>
+                  </button>
+                </div>
+              </div>
+              
+              <div class = "box" v-if="form.submitted">
+                <p class = "subtitle">Results</p>
+                <p v-for="(value, name) in form">
+                    {{ name }}: {{value}}</p>
+              </div>
+              
+            </div>
+          </section>
+          
+          <br>
+          <div class = "box">
+            <div class="columns">
+              <div class="column is-half">
+                <div class = "has-text-justified">
+                  <p class = "is-size-4"><strong class = "has-text-link">WHAT IS THE SCAT5?</strong></p>
+                  <br>
+                  <div class = "is-size-7">
+                    <p class = "has-text-link">The SCAT5 is a standardized tool for evaluating concussions
+                      designed for use by physicians and licensed healthcare professionals. The SCAT5 cannot be 
+                      performed correctly in less than 10 minutes.</p>
+                    <br>
+                    <p>If you are not a physician or licensed healthcare professional,
+                      please use the Concussion Recognition Tool 5 (CRT5). The
+                      SCAT5 is to be used for evaluating athletes aged 13 years
+                      and older. For children aged 12 years or younger, please
+                      use the Child SCAT5. </p>
+                    <br>
+                    <p>Preseason SCAT5 baseline testing can be useful for
+                      interpreting post-injury test scores, but is not required for
+                      that purpose.Detailed instructions for use of the SCAT5 are
+                      provided on page 7. Please read through these instructions
+                      carefully before testing the athlete. Brief verbal instructions
+                      for each test are given in italics. The only equipment required
+                      for the tester is a watch or timer.</p>
+                    <br>
+                    <p class = "has-text-link">This tool may be freely copied in its current form for distribution to individuals, 
+                      teams, groups and organizations. It should not be altered in any way, re-branded or 
+                      sold for commercial gain. Any revision, translation or reproduction
+                      in a digital form requires specific approval by the Concussion in Sport Group.</p>
+                    <br>
+                  </div>
+                  <p class = "is-size-4"><strong class = "has-text-danger">Recognise and Remove</strong></p>
+                  <br>
+                  <div class = "is-size-7">
+                    <p>A head impact by either a direct blow or indirect transmission
+                      of force can be associated with a serious and potentially fatal
+                      brain injury. If there are significant concerns, including any
+                      of the red flags listed in Box 1, then activation of emergency
+                      procedures and urgent transport to the nearest hospital
+                      should be arranged.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="column is-half">
+                <div class = "has-text-justified">
+                  <div class = "is-size-7">
+                    <p><strong>Key points</strong></p>
+                    <br>
+                    <div class = "has-text-danger">
+                      <ul>
+                        <li>• Any athlete with suspected concussion should be REMOVED
+                          FROM PLAY, medically assessed and monitored for
+                          deterioration. No athlete diagnosed with concussion.
+                          should be returned to play on the day of injury.</li>
+                        <br>
+                        <li>• If an athlete is suspected of having a concussion and
+                          medical personnel are not immediately available, the
+                          athlete should be referred to a medical facility for urgent
+                          assessment.</li>
+                        <br>
+                        <li>• Athletes with suspected concussion should not drink
+                          alcohol, use recreational drugs and should not drive a motor
+                          vehicle until cleared to do so by a medical professional.</li>
+                        <br>
+                        <li>• Concussion signs and symptoms evolve over time and it
+                          is important to consider repeat evaluation in the assessment of 
+                          concussion.</li>
+                        <br>
+                        <li>• The diagnosis of a concussion is a clinical judgment,
+                          made by a medical professional. The SCAT5 should NOT
+                          be used by itself to make, or exclude, the diagnosis of
+                          concussion. An athlete may have a concussion even if
+                          their SCAT5 is “normal”.</li>
+                      </ul>
+                    </div>
+                    <br>
+                    <p><strong>Remember:</strong></p>
+                    <br>
+                    <ul>
+                      <li>• The basic principles of first aid (danger, response, airway,
+                        breathing, circulation) should be followed.</li>
+                      <br>
+                      <li>• Do not attempt to move the athlete (other than that required
+                        for airway management) unless trained to do so.</li>
+                      <br>
+                      <li>• Assessment for a spinal cord injury is a critical part of the
+                        initial on-field assessment.</li>
+                      <br>
+                      <li>• Do not remove a helmet or any other equipment unless
+                        trained to do so safely.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+      </div>
+    </div>
+
+    
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src = "1PatientDetails.js"></script>
+  </body>
+</html>

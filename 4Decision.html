@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>Decision</title>
+    <link 
+      rel="stylesheet"
+      type ="text/css" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.2/css/bulma.min.css">
+  </head>
+
+  <body>
+    <nav class="navbar is-info">
+      <div class="navbar-brand">
+        <a class="navbar-item">
+          <b>SCAT5</b>
+        </a>
+      </div>
+    
+      <div id="navbar" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item"  href="1PatientDetails.html">
+            Patient Details
+          </a>
+    
+          <a class="navbar-item" href="2ImmediateAssessment.html">
+            Immediate or On-Field Assessment
+          </a>
+    
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Office or Off-Field Assessment
+            </a>
+    
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="3.1AthleteBackground.html">
+                Athlete Background
+              </a>
+              <a class="navbar-item"  href="3.2SymptomEvaluation.html">
+                Symptom Evaluation
+              </a>
+              <a class="navbar-item"  href="3.3CognitiveScreening.html">
+                Cognitive Screening
+              </a>
+              <a class="navbar-item"  href="3.4NeurologicalScreen.html">
+                Neurological Screen
+              </a>
+              <a class="navbar-item"  href="3.5DelayedRecall.html">
+                Delayed Recall
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item"  href="4Decision.html">
+                  Decision
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="columns" id="app">
+      <div class="column is-two-thirds">
+        <section class="section">
+          <h1 class="title"><strong>Step 6: Decision</strong></h1>
+
+          <hr> <!--Line break-->
+
+          <section class="form">
+            <div class = "box">
+              <div class="field">
+                <label class="label">Date / time of injury:</label>
+                <div class="control">
+                  <input 
+                    v-model="form.injuryDate" 
+                    class="input" 
+                    type="date">
+                  <input 
+                    v-model="form.injuryTime" 
+                    class="input" 
+                    type="time">
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">If the athlete is known to you prior to their injury, are they different from their usual self?</label>
+                <div class="control">
+                  <label class="radio">
+                    <input 
+                      v-model="form.different" 
+                      name="different" 
+                      type="radio" 
+                      value="Yes">
+                    Yes
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form.different" 
+                      name="different" 
+                      type="radio" 
+                      value="No">
+                    No
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form.different" 
+                      name="different" 
+                      type="radio" 
+                      value="unsure">
+                    Unsure
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form.different" 
+                      name="different" 
+                      type="radio" 
+                      value="notApplicable">
+                    Not Applicable
+                  </label>  
+                </div>
+                <p><em>(if different, describe why in the clinical notes section)</em></p>
+              </div>
+
+              <div class="field">
+                <label class="label">Concussion Diagnosed?</label>
+                <div class="control">
+                  <label class="radio">
+                    <input 
+                      v-model="form.diagnosedConcussion" 
+                      name="diagnosedConcussion" 
+                      type="radio" 
+                      value="Yes">
+                    Yes
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form.diagnosedConcussion" 
+                      name="diagnosedConcussion" 
+                      type="radio" 
+                      value="No">
+                    No
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form.diagnosedConcussion" 
+                      name="diagnosedConcussion" 
+                      type="radio" 
+                      value="unsure">
+                    Unsure
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form.diagnosedConcussion" 
+                      name="diagnosedConcussion" 
+                      type="radio" 
+                      value="notApplicable">
+                    Not Applicable
+                  </label>  
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">If re-testing, has the athlete improved?</label>
+                <div class="control">
+                  <label class="radio">
+                    <input 
+                      v-model="form.improved" 
+                      name="improved" 
+                      type="radio" 
+                      value="Yes">
+                    Yes
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form.improved" 
+                      name="improved" 
+                      type="radio" 
+                      value="No">
+                    No
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form.improved" 
+                      name="improved" 
+                      type="radio" 
+                      value="unsure">
+                    Unsure
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form.improved" 
+                      name="improved" 
+                      type="radio" 
+                      value="notApplicable">
+                    Not Applicable
+                  </label>  
+                </div>
+              </div>
+
+              <hr> <!--Line Break-->
+
+              <p><b>I am a physician or licensed healthcare professional and I have personally
+                administered or supervised the administration of this SCAT5.</b></p>
+              
+              <br>
+              
+              <div class="field">
+                <label class="label">Signature: </label>
+                <div class="control">
+                  <input 
+                    v-model="form.proSignature" 
+                    class="input" 
+                    type="text" 
+                    placeholder="Text">
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Name:</label>
+                <div class="control">
+                  <input 
+                    v-model="form.proName" 
+                    class="input" 
+                    type="text" 
+                    placeholder="Text">
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Title:</label>
+                <div class="control">
+                  <input 
+                    v-model="form.proTitle" 
+                    class="input" 
+                    type="text" 
+                    placeholder="Text">
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Registration number (if applicable):</label>
+                <div class="control">
+                  <input 
+                    v-model="form.proRegistrationNum" 
+                    class="input" 
+                    type="number" 
+                    placeholder="Number">
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Date:</label>
+                <div class="control">
+                  <input 
+                    v-model="form.decisionDate" 
+                    class="input" 
+                    type="date">
+                </div>
+              </div>
+
+              <div class="field is-grouped">
+                <div class="control">
+                  <button class="button is-link" @click="form.submitted = true">Submit</button>
+                </div>
+                <div class="control">
+                  <button class="button is-link is-light" @click="form.submitted = false">Cancel</button>
+                </div>
+              </div>
+              
+              <div class = "box" v-if="form.submitted">
+                <p class = "subtitle">Results</p>
+                <p v-for="(value, name) in form">
+                    {{ name }}: {{value}}</p>
+              </div>
+
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src = "4Decision.js"></script>
+  </body>
+</html>
+    

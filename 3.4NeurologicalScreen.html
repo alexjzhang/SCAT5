@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>Neurological Screen</title>
+    <link 
+      rel="stylesheet"
+      type ="text/css" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.2/css/bulma.min.css">
+  </head>
+
+  <body>
+    <nav class="navbar is-info">
+      <div class="navbar-brand">
+        <a class="navbar-item">
+          <b>SCAT5</b>
+        </a>
+      </div>
+    
+      <div id="navbar" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item"  href="1PatientDetails.html">
+            Patient Details
+          </a>
+    
+          <a class="navbar-item" href="2ImmediateAssessment.html">
+            Immediate or On-Field Assessment
+          </a>
+    
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Office or Off-Field Assessment
+            </a>
+    
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="3.1AthleteBackground.html">
+                Athlete Background
+              </a>
+              <a class="navbar-item"  href="3.2SymptomEvaluation.html">
+                Symptom Evaluation
+              </a>
+              <a class="navbar-item"  href="3.3CognitiveScreening.html">
+                Cognitive Screening
+              </a>
+              <a class="navbar-item"  href="3.4NeurologicalScreen.html">
+                Neurological Screen
+              </a>
+              <a class="navbar-item"  href="3.5DelayedRecall.html">
+                Delayed Recall
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item"  href="4Decision.html">
+                  Decision
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="columns" id="app">
+      <div class="column is-two-thirds">
+        <section class="section">
+          <h1 class="title"><strong>Step 4: Neurological Screen</strong></h1> 
+
+          <hr> <!--Line break-->
+
+          <section class="form"> 
+            <div class="box">
+    
+              <p>See the instruction sheet (page 7) for details of
+                  test administration and scoring of the tests.</p>
+              
+              <div class="field">
+                <label class="label">Can the patient read aloud (e.g. symptom checklist) and follow instructions without difficulty?</label>
+                <div class="control">
+                  <label class="radio">
+                    <input 
+                      v-model="form.readAloud" 
+                      name="readAloud" 
+                      type="radio" 
+                      value="Yes">
+                    Yes
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form.readAloud" 
+                      name="readAloud" 
+                      type="radio" 
+                      value="No">
+                    No
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Does the patient have a full range of painfree PASSIVE cervical spine movement?</label>
+                <div class="control">
+                  <label class="radio">
+                    <input 
+                      v-model="form.cSpineRange" 
+                      name="cSpineRange" 
+                      type="radio" 
+                      value="Yes">
+                    Yes
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form.cSpineRange" 
+                      name="cSpineRange" 
+                      type="radio" 
+                      value="No">
+                    No
+                  </label>
+                </div>
+              </div>
+              
+              <div class="field">
+                <label class="label">Without moving their head or neck, can the patient look
+                    side-to-side and up-and-down without double vision?</label>
+                <div class="control">
+                  <label class="radio">
+                    <input 
+                      v-model="form.eyeMovement" 
+                      name="eyeMovement" 
+                      type="radio" 
+                      value="Yes">
+                    Yes
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form.eyeMovement" 
+                      name="eyeMovement" 
+                      type="radio" 
+                      value="No">
+                    No
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Can the patient perform the finger nose
+                    coordination test normally?</label>
+                <div class="control">
+                  <label class="radio">
+                    <input 
+                      v-model="form.fingerNose" 
+                      name="fingerNose" 
+                      type="radio" 
+                      value="Yes">
+                    Yes
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form.fingerNose" 
+                      name="fingerNose" 
+                      type="radio" 
+                      value="No">
+                    No
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Can the patient perform tandem gait normally?</label>
+                <div class="control">
+                  <label class="radio">
+                    <input 
+                      v-model="form.tandemGait" 
+                      name="tandemGait" 
+                      type="radio" 
+                      value="Yes">
+                    Yes
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form.tandemGait" 
+                      name="tandemGait" 
+                      type="radio" 
+                      value="No">
+                    No
+                  </label>
+                </div>
+              </div>
+            </div>
+            
+            <hr> <!--Line Break-->
+
+            <div class="box">
+              <h2 class="subtitle">
+                <p><strong>Balance Examination</strong></p>
+                <p>Modified Balance Error Scoring System (mBESS) testing</p>
+              </h2>
+
+              <div class="field">
+                <label class="label">Which foot was tested
+                    (i.e. which is the non-dominant foot)</label>
+                <div class="control">
+                  <label class="radio">
+                    <input 
+                      v-model="form.foot" 
+                      name="foot" 
+                      type="radio" 
+                      value="Left">
+                    Left
+                  </label>
+                  <label class="radio">
+                    <input 
+                      v-model="form.foot" 
+                      name="foot" 
+                      type="radio" 
+                      value="Right">
+                    Right
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Testing surface (hard floor, field, etc.)</label>
+                <div class="control">
+                  <input 
+                    v-model="form.testingSurface" 
+                    class="input" 
+                    type="text" 
+                    placeholder="Text">
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Footwear (shoes, barefoot, braces, tape, etc.)</label>
+                <div class="control">
+                  <input 
+                    v-model="form.footwear" 
+                    class="input" 
+                    type="text" 
+                    placeholder="Text">
+                </div>
+              </div>
+
+              <br>
+              
+              <div class="columns">
+                <div class="column is-two-thirds">
+                  <p>Condition</p>
+                  <hr style="margin-top: 0%; margin-bottom: 3%">
+                  <p><strong>Double leg stance</strong></p>
+                  <br>
+                  <p><strong>Single leg stance (non-dominant foot)</strong></p>
+                  <br>
+                  <p><strong>Tandem stance (non-dominant foot at the back)</strong></p>
+                  <br>
+                  <p><strong>Total Errors</strong></p>
+                </div>
+
+                <div class="column is-one-third">
+                  <p>Errors</p>
+                  <hr style="margin-top: 0%; margin-bottom: 3%">
+
+                  <div class="field">
+                    <div class="control">  
+                      <div class="select is-info">
+                        <select v-model="form.doubleLegError">
+                          <option value="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                        </select>
+                      </div>
+                      <p style = "margin-top: 3.5%; display:inline-block">of 10</p>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="control">  
+                      <div class="select is-info">
+                        <select v-model="form.singleLegError">
+                          <option value="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                        </select>
+                      </div>
+                      <p style = "margin-top: 3.5%; display:inline-block">of 10</p>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="control">  
+                      <div class="select is-info">
+                        <select v-model="form.tandemError">
+                          <option value="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                        </select>
+                      </div>
+                      <p style = "margin-top: 3.5%; display:inline-block">of 10</p>
+                    </div>
+                  </div>
+
+                  <div class="field"> 
+                    <p><strong>{{ totalBalanceError }}</strong> of 30</p>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="field is-grouped">
+                <div class="control">
+                  <button class="button is-link" @click="form.submitted = true">Submit</button>
+                </div>
+                <div class="control">
+                  <button class="button is-link is-light" @click="form.submitted = false">Cancel</button>
+                </div>
+                <div class="control">
+                  <button class="button is-success">
+                    <a href="3.5DelayedRecall.html" >
+                      Next
+                    </a>
+                  </button>
+                </div>
+              </div>
+              
+              <div class = "box" v-if="form.submitted">
+                <p class = "subtitle">Results</p>
+                <p v-for="(value, name) in form">
+                    {{ name }}: {{value}}</p>
+              </div>
+            </div>
+
+          </section>
+        </section>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src = "3.4NeurologicalScreen.js"></script> 
+  </body>
+</html>
+    
